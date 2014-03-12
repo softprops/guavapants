@@ -5,6 +5,9 @@ import com.google.common.base.{ Function => GFunction, Optional, Predicate, Supp
 import com.google.common.collect.Ordering
 import GuavaConverters._
 import scala.collection.JavaConverters._
+import scala.concurrent.{ Await, Future }
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration.Duration
 
 class GuavaConvertersSpec extends FunSpec {
   describe("GuavaConverters") {
@@ -45,5 +48,13 @@ class GuavaConvertersSpec extends FunSpec {
       assert(List(1,2,3).sorted(so) === List(3,2,1))
     }
 
+    it ("should convert listenable futures") {
+      val gf = Future {
+        14
+      }.asGuava
+      assert(gf.get() === 14)
+      val sf = gf.asScala
+      assert(Await.result(sf, Duration.Inf) === 14)
+    }
   }
 }
