@@ -2,6 +2,79 @@
 
 [![Build Status](https://travis-ci.org/softprops/guavapants.png?branch=master)](https://travis-ci.org/softprops/guavapants)
 
-pants that look good on both your scala and guava types.
+> pants that look good on both your [scala](http://www.scala-lang.org/api/current/) and [guava](https://code.google.com/p/guava-libraries/) types.
+
+## Usage
+
+This library attempts to solve the problem that `scala.collection.JavaConverters` solves for resolving interface discrepancies between Scala collections and Java collection when things start getting uncomfortable. Guava pants provides convenient `asGuava` enrichments on Scala types that map well to equivalent Guava types and `asScala` enrichments to Guava types that map well to equivalent Scala types.
+
+Most usage follows the same convention as `JavaConverters`. Just import `GuavaConverters` into scope.
+
+```scala
+import guavapants.GuavaConverters._
+```
+
+Then call the `asGuava` or `asScala` method on the target value to achieve a more comfortable fit for which ever interface you are trying to satisfy.
+
+### Functions
+
+Guava defines primitives for [Function objects](http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Function.html) that look very familiar to your everyday Scala functions. They are a bit limited in that they are only defined for functions that take one argument, most likey a design decision for the use case of [transforming collections](https://code.google.com/p/guava-libraries/wiki/FunctionalExplained#Functions).
+
+
+Given a scala function, you can switch to a Guava type by calling `asGuava` on it.
+
+```scala
+val gf: com.google.common.base.Function[Int, String] =
+  ((_: Int).toString).asGuava
+```
+
+### Predicates
+
+In Guava, there is a special name attributed to functions that take one argument and return a Boolean value called a [Predicate](http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Predicate.html). In Guava the return type is a primitive Boolean type. This works out because Scala's Boolean type can not be null ( try for yourself! ).
+
+Given a scala function returning a Boolean value, you can switch to a Guava type by calling `asGuava` on it.
+
+```scala
+val gp: com.google.common.base.Predicate[Int, Boolean] =
+  ((_:Int) % 0 == 0).asGuava
+```
+
+### Suppliers
+
+Guava defines a special interface for functions which take no arguments called [Suppliers](http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Supplier.html). In Scala, this is just a function that takes no arguments.
+
+Given a scala function which takes no arguments, you can switch to a Guava type by calling `asGuava` on it.
+
+```scala
+val gs: com.google.common.base.Supplier[Int] =
+  (() => 32).asGuava
+```
+
+### Optionals
+
+Guava shares a primitive similar to Scala's built-in Option type called [Optional](http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Optional.html) It serves the same purpose in indicating the presence or absence of some underlying value.
+
+Given a scala `Option` type, you can convert to a Guava type by calling `asGuava` on it.
+
+```scala
+val gp = com.google.common.base.Optional[Int] =
+  Some(1).asGuava
+```
+
+### ListenableFutures
+
+Guava can be a little aggressive in the problems it tries to solve as one library. Among the interesting things found in its collection are abstractions for futures which you can register hooks on called [ListenableFutures](http://docs.guava-libraries.googlecode.com/git/javadoc/index.html?com/google/common/util/concurrent/ListenableFuture.html). They is a strong correlation to Scala's built-in Futures. 
+
+Given a scala `Future`, you can convert to a Guava type by calling `asGuava` on it.
+
+```scala
+import scala.concurrent.ExecutionContext.Implicits.global
+val gf = com.google.common.util.concurrent.ListenableFuture[Int] =
+  (Future(42)).asGuava
+```
+
+### Issues
+
+Did I miss something? [Let me know](https://github.com/softprops/guavapants/issues/new?title=something%20you%20missed...).
 
 Doug Tangren (softprops) 2014
