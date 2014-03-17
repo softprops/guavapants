@@ -53,9 +53,8 @@ object GuavaConverters {
         override def onFailure(t: Throwable) = c(Failure(t))
       }
 
-    override def onComplete[U](callback: Try[A] => U)(implicit ec: ExecutionContext): Unit = {
+    override def onComplete[U](callback: Try[A] => U)(implicit ec: ExecutionContext): Unit =
       Futures.addCallback(future, asGuavaCallback(callback))
-    }
 
     override def isCompleted: Boolean = future.isDone
 
