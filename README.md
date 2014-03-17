@@ -73,7 +73,15 @@ val gf = com.google.common.util.concurrent.ListenableFuture[Int] =
   (Future(42)).asGuava
 ```
 
-### Issues
+## Extras
+
+Things you do not need to know but may appreciate.
+
+### Value Types
+
+Guava pants was designed to be as efficient as possible at runtime. In Guava environments, function interfaces are exposed prolifically ( with good reason ). If you are calling into these interfaces from Scala you will be interfacing with them a lot at runtime. The types of conversions this library does (implicit conversions) between types has historically had a less than desirable runtime cost. In scala 2.10, there was a new type, a [value type](http://docs.scala-lang.org/overviews/core/value-classes.html) that was introduced to help reduce and eliminate this runtime cost. Guava pants whole heartedly was designed to take advantage of this Scala 2.10 feature.
+
+## Issues
 
 Did I miss something? [Let me know](https://github.com/softprops/guavapants/issues/new?title=something%20you%20missed...).
 
