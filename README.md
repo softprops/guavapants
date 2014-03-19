@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/softprops/guavapants.png?branch=master)](https://travis-ci.org/softprops/guavapants)
 
+<img height="400" style="text-align:center" src="pants.svg"/>
+
 > pants that look good on both your [scala](http://www.scala-lang.org/api/current/) and [guava](https://code.google.com/p/guava-libraries/) types.
 
 ## Usage
