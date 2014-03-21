@@ -1,0 +1,25 @@
+{
+  "organization" : "me.lessis",
+  "name" : "guavapants",
+  "version" : "0.1.0",
+  "description" : "Seamless transformations between Guava and Scala types",
+  "site" : "https://github.com/softprops/guavapants/#readme",
+  "tags" : [ "guava" ],
+  "docs" : "",
+  "resolvers" : [ "http://dl.bintray.com/content/softprops/maven" ],
+  "dependencies" : [ {
+    "organization" : "com.google.guava",
+    "name" : "guava",
+    "version" : "16.0"
+  }, {
+    "organization" : "com.google.code.findbugs",
+    "name" : "jsr305",
+    "version" : "2.0.0"
+  } ],
+  "scalas" : [ "2.10.3" ],
+  "licenses" : [ {
+    "name" : "MIT",
+    "url" : "https://github.com/softprops/guavapants/blob/0.1.0/LICENSE"
+  } ],
+  "sbt" : false
+}
