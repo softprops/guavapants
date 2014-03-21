@@ -1,0 +1,6 @@
+## initial release
+
+Guava pants is a small and efficient library that provides bi-directional transformations between Scala and [Guava](https://code.google.com/p/guava-libraries/) types. Users of [JavaConverters](http://www.scala-lang.org/api/2.10.2/index.html#scala.collection.JavaConverters$) will find the interface familiar. Like `scala.collection.JavaConverters`, which defines `asJava` and `asScala` enrichments on correlated and Java collections, Guava pants defines `asGuava` and `asScala` enrichments on correlated Scala and Guava types. Try it on for a more comfortable fit in environments where Guava and Scala types coexist in the same department store.
+
+For more information see the project [readme](https://github.com/softprops/guavapants#readme)
+
