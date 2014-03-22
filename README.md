@@ -17,6 +17,8 @@ This library targets scala 2.10 and higher.
 Add the following to your sbt build definition
 
 ```scala
+resolvers += "softprops-maven" at "http://dl.bintray.com/content/softprops/maven"
+
 libraryDependencies += "me.lessis" %% "guavapants" % "0.1.0"
 ```
 
@@ -52,7 +54,7 @@ In Guava, there is a special name attributed to functions that take one argument
 Given a scala function returning a Boolean value, you can switch to a Guava type by calling `asGuava` on it.
 
 ```scala
-val gp: com.google.common.base.Predicate[Int, Boolean] =
+val gp: com.google.common.base.Predicate[Int] =
   ((_:Int) % 0 == 0).asGuava
 ```
 
@@ -74,7 +76,7 @@ Guava shares a primitive similar to Scala's built-in Option type called [Optiona
 Given a scala `Option` type, you can convert to a Guava type by calling `asGuava` on it.
 
 ```scala
-val gp = com.google.common.base.Optional[Int] =
+val go: com.google.common.base.Optional[Int] =
   Some(1).asGuava
 ```
 
@@ -86,7 +88,8 @@ Given a scala `Future`, you can convert to a Guava type by calling `asGuava` on 
 
 ```scala
 import scala.concurrent.ExecutionContext.Implicits.global
-val gf = com.google.common.util.concurrent.ListenableFuture[Int] =
+import scala.concurrent.Future
+val gf: com.google.common.util.concurrent.ListenableFuture[Int] =
   (Future(42)).asGuava
 ```
 
