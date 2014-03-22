@@ -8,9 +8,22 @@
 
 > pants that look good on both your [scala](http://www.scala-lang.org/api/current/) and [guava](https://code.google.com/p/guava-libraries/) types.
 
+## Install
+
+This library targets scala 2.10 and higher.
+
+### via sbt.
+
+Add the following to your sbt build definition
+
+```scala
+libraryDependencies += "me.lessis" %% "guavapants" % "0.1.0"
+```
+
+
 ## Usage
 
-This library attempts to solve the problem that `scala.collection.JavaConverters` solves for resolving interface discrepancies between Scala collections and Java collection when things start getting uncomfortable. Guava pants provides convenient `asGuava` enrichments on Scala types that map well to equivalent Guava types and `asScala` enrichments to Guava types that map well to equivalent Scala types.
+This library attempts to address the problem that `scala.collection.JavaConverters` addresses for resolving interface discrepancies between Scala collections and Java collections, for Guava types when things start getting uncomfortable. Guava pants provides convenient `asGuava` enrichments on Scala types that map well to equivalent Guava types and `asScala` enrichments on Guava types that map well to equivalent Scala types.
 
 Most usage follows the same convention as `JavaConverters`. Just import `GuavaConverters` into scope.
 
@@ -67,7 +80,7 @@ val gp = com.google.common.base.Optional[Int] =
 
 ### ListenableFutures
 
-Guava can be a little aggressive in the problems it tries to solve as one library. Among the interesting things found in its collection are abstractions for futures which you can register hooks on called [ListenableFutures](http://docs.guava-libraries.googlecode.com/git/javadoc/index.html?com/google/common/util/concurrent/ListenableFuture.html). They is a strong correlation to Scala's built-in Futures. 
+Guava can be a little aggressive in the problems it tries to solve as one library. Among the more interesting things found in its collection are abstractions for Futures which you can register hooks on called [ListenableFutures](http://docs.guava-libraries.googlecode.com/git/javadoc/index.html?com/google/common/util/concurrent/ListenableFuture.html). There is a strong correlation to Scala's built-in Futures in their design. 
 
 Given a scala `Future`, you can convert to a Guava type by calling `asGuava` on it.
 
@@ -83,7 +96,7 @@ Things you do not need to know but may appreciate.
 
 ### Value Types
 
-Guava pants was designed to be as efficient as possible at runtime. In Guava environments, function interfaces are exposed prolifically ( with good reason ). If you are calling into these interfaces from Scala you will be interfacing with them a lot at runtime. The types of conversions this library does (implicit conversions) between types has historically had a less than desirable runtime cost. In scala 2.10, there was a new type, a [value type](http://docs.scala-lang.org/overviews/core/value-classes.html) that was introduced to help reduce and eliminate this runtime cost. Guava pants wholeheartedly was designed to take advantage of this Scala 2.10 feature.
+Guava pants was designed to be as efficient as possible at runtime. In java code bases where Guava is used, function interfaces are often exposed prolifically ( with good reason ). If you are calling into these interfaces from Scala you will need be interfacing with them a lot at runtime. The types of conversions this library does (implicit conversions) between types has historically had a less than desirable runtime cost. In scala 2.10, there was a new kind of type, a [value type](http://docs.scala-lang.org/overviews/core/value-classes.html) that was introduced to help reduce and eliminate this runtime cost. Guava pants wholeheartedly was designed to take advantage of this Scala 2.10 feature.
 
 ## Issues
 
