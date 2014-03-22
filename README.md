@@ -103,7 +103,7 @@ Guava pants was designed to be as efficient as possible at runtime. In java code
 
 ## Alternatives
 
-If you are already on the twitter stack, you may want to consider using the [bijection](https://github.com/twitter/bijection#readme) [guava](https://github.com/twitter/bijection/tree/develop/bijection-guava/src/main/scala/com/twitter/bijection/guava) module.
+You may also want to consider using the [bijection](https://github.com/twitter/bijection#readme) [guava](https://github.com/twitter/bijection/tree/develop/bijection-guava/src/main/scala/com/twitter/bijection/guava) module.
 
 ## Issues
 
