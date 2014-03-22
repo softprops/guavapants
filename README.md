@@ -101,6 +101,10 @@ Things you do not need to know but may appreciate.
 
 Guava pants was designed to be as efficient as possible at runtime. In java code bases where Guava is used, function interfaces are often exposed prolifically ( with good reason ). If you are calling into these interfaces from Scala you will need be interfacing with them a lot at runtime. The types of conversions this library does (implicit conversions) between types has historically had a less than desirable runtime cost. In scala 2.10, there was a new kind of type, a [value type](http://docs.scala-lang.org/overviews/core/value-classes.html) that was introduced to help reduce and eliminate this runtime cost. Guava pants wholeheartedly was designed to take advantage of this Scala 2.10 feature.
 
+## Alternatives
+
+If you are already on the twitter stack, you may want to consider using the [bijection](https://github.com/twitter/bijection#readme) [guava](https://github.com/twitter/bijection/tree/develop/bijection-guava/src/main/scala/com/twitter/bijection/guava) module.
+
 ## Issues
 
 Did I miss something? [Let me know](https://github.com/softprops/guavapants/issues/new?title=something%20you%20missed...).
