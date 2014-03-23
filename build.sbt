@@ -32,3 +32,16 @@ bintraySettings
 bintray.Keys.packageLabels in bintray.Keys.bintray := Seq("guava")
 
 externalResolvers in LsKeys.lsync := (resolvers in bintray.Keys.bintray).value
+
+pomExtra := (
+  <scm>
+    <url>git@github.com:softprops/guavapants.git</url>
+    <connection>scm:git:git@github.com:softprops/guavapants.git</connection>
+  </scm>
+  <developers>
+    <developer>
+      <id>softprops</id>
+      <name>Doug Tangren</name>
+      <url>https://github.com/softprops</url>
+    </developer>
+  </developers>)
