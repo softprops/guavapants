@@ -1,9 +1,10 @@
+sudo: false
 before_script:
  - "echo $JAVA_OPTS"
  - "export JAVA_OPTS='-Xmx512m -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPerm\
 Size=256M'"
 language: scala
 scala:
-  - 2.10.3
+  - 2.11.5
 jdk:
   - openjdk6

@@ -19,7 +19,7 @@ Add the following to your sbt build definition
 ```scala
 resolvers += "softprops-maven" at "http://dl.bintray.com/content/softprops/maven"
 
-libraryDependencies += "me.lessis" %% "guavapants" % "0.1.0"
+libraryDependencies += "me.lessis" %% "guavapants" % "0.1.1"
 ```
 
 

@@ -2,11 +2,11 @@ organization := "me.lessis"
 
 name := "guavapants"
 
-version := "0.1.0"
+version := "0.1.1"
 
 description := "Seamless transformations between Guava and Scala types"
 
-crossScalaVersions := Seq("2.10.3")
+crossScalaVersions := Seq("2.10.4", "2.11.5")
 
 scalaVersion := crossScalaVersions.value.head
 
@@ -17,7 +17,7 @@ licenses := Seq(
 libraryDependencies ++= Seq(
   "com.google.guava" % "guava" % "16.0",
   "com.google.code.findbugs" % "jsr305" % "2.0.0", // dep on finbugs fixes this compile issue -- https://issues.scala-lang.org/browse/SI-7751
-  "org.scalatest" %% "scalatest" % "1.9.1" % "test")
+  "org.scalatest" %% "scalatest" % "2.2.1" % "test")
 
 homepage := Some(url("https://github.com/softprops/%s/#readme".format(name.value)))
 
